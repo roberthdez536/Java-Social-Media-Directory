@@ -1,15 +1,17 @@
 package application;
 	
+import java.sql.SQLException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import operations.Database;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
-	@Override
+	
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
@@ -23,7 +25,10 @@ public class Main extends Application {
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
+		Database.Connect();
+		Database.readTable(Database.Query("SELECT * FROM users"));
 		launch(args);
+		Database.closeConnection();
 	}
 }
