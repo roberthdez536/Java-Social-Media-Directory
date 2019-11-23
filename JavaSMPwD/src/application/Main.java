@@ -12,6 +12,15 @@ import javafx.scene.Scene;
 
 public class Main extends Application {
 	
+	public static void main(String[] args) throws SQLException {
+		Database.Connect();
+		//Database.readTable(Database.mysqlQuery("SELECT * FROM users"));
+		launch(args);
+		Database.closeConnection();
+	}
+	
+	// Sets window and other necessary parts for the javaFX GUI
+	@Override
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
@@ -25,10 +34,4 @@ public class Main extends Application {
 		}
 	}
 	
-	public static void main(String[] args) throws SQLException {
-		Database.Connect();
-		Database.readTable(Database.Query("SELECT * FROM users"));
-		launch(args);
-		Database.closeConnection();
-	}
 }
