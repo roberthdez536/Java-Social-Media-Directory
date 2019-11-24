@@ -1,6 +1,8 @@
 package application;
 
+import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,7 +11,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import operations.Add;
 import operations.Database;
 import operations.User;
 
@@ -19,9 +23,7 @@ public class GUIController {
 	@FXML private TableColumn<User, String> colUname;
 	@FXML private TableColumn<User, String> colPass;
 	@FXML private TableColumn<User, String> colEmail;
-	@FXML private Button refreshButton;
 	private ObservableList<User> data;
-	
 	
 	@FXML
 	public void initialize() {
@@ -57,8 +59,23 @@ public class GUIController {
 	    }
 	}
 	
+	@FXML private Button refreshButton;
 	public void refreshTable(ActionEvent event) {
 		buildUsersTable();
+	}
+	
+	@FXML private TextField addtf1;
+	@FXML private TextField addtf2;
+	@FXML private TextField addtf3;
+	@FXML private Button addsubmit;
+	@FXML private TextField removetf1;
+	@FXML private Button removesubmit;
+	@FXML private TextField edittf1;
+	@FXML private Button editsubmit;
+	
+	
+	public void addSubmit(ActionEvent event) throws SQLException, IOException {
+		Add.addUsertoTable(addtf1.getText(), addtf2.getText(), addtf3.getText());
 	}
 	
 	// Example button fx:id to set in Scene Builder
