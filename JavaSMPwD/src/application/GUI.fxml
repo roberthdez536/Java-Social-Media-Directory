@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GUIController">
+   <children>
+      <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="view users">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="UsersTable" layoutX="84.0" layoutY="14.0" prefHeight="266.0" prefWidth="702.0">
+                          <columns>
+                            <TableColumn fx:id="colId" prefWidth="60.0" text="id" />
+                            <TableColumn fx:id="colUname" minWidth="0.0" prefWidth="142.4000244140625" text="uname" />
+                              <TableColumn fx:id="colPass" minWidth="4.0" prefWidth="312.79998779296875" text="pass" />
+                              <TableColumn fx:id="colEmail" minWidth="0.0" prefWidth="185.60003662109375" text="email" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="myButton" layoutX="51.0" layoutY="495.0" mnemonicParsing="false" onAction="#saySomething" text="Hi Button" />
+                        <Button fx:id="refreshButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#refreshTable" text="Refresh" />
+                        <Button fx:id="visibilitytestbutton" layoutX="564.0" layoutY="421.0" mnemonicParsing="false" onAction="#toggleLabelTest" text="Toggle Label" />
+                        <Label fx:id="testlabel" layoutX="559.0" layoutY="382.0" text="This is a test label" underline="true" visible="false" />
+                        <ChoiceBox layoutX="285.0" layoutY="326.0" prefWidth="150.0" />
+                        <TextField layoutX="286.0" layoutY="369.0" promptText="Choice box test textfield" />
+                        <Button layoutX="445.0" layoutY="369.0" mnemonicParsing="false" text="CB test Button" />
+                        <Label layoutX="154.0" layoutY="373.0" text="Choice box test label:" />
+                        <Label layoutX="154.0" layoutY="412.0" text="Choice box test label2:" />
+                        <TextField layoutX="286.0" layoutY="408.0" promptText="Choice box test textfield2" />
+                        <Button layoutX="445.0" layoutY="408.0" mnemonicParsing="false" text="CB test Button2" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="add users">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="addtf1" layoutX="251.0" layoutY="99.0" />
+                        <TextField fx:id="addtf2" layoutX="251.0" layoutY="170.0" />
+                        <Label layoutX="146.0" layoutY="103.0" text="Enter Username:" />
+                        <Label layoutX="148.0" layoutY="174.0" text="Enter Password:" />
+                        <Label layoutX="159.0" layoutY="249.0" text="Enter Email:" />
+                        <TextField fx:id="addtf3" layoutX="251.0" layoutY="245.0" />
+                        <Button fx:id="addsubmit" layoutX="522.0" layoutY="245.0" mnemonicParsing="false" onAction="#addUser" text="Submit" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+           <Tab text="remove users">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="removetf1" layoutX="251.0" layoutY="118.0" />
+                        <Label layoutX="168.0" layoutY="122.0" text="Enter ID:" />
+                        <Button fx:id="removesubmit" layoutX="493.0" layoutY="118.0" mnemonicParsing="false" onAction="#removeUser" text="Submit" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+           <Tab text="edit users">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="edittf1" layoutX="193.0" layoutY="50.0" />
+                        <Label layoutX="114.0" layoutY="54.0" text="Enter ID:" />
+                        <Button fx:id="editsubmit" layoutX="407.0" layoutY="50.0" mnemonicParsing="false" text="Submit" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
