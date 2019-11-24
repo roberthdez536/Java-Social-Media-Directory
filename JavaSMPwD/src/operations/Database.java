@@ -9,13 +9,14 @@ import com.mysql.jdbc.Statement;
 
 
 public class Database {
-	private static Connection con;
+	public static Connection con;
 	
 	// Establishes connection to SQL server
 	public static void Connect() throws SQLException {
 		String url = "jdbc:mysql://localhost:3306/testlogin?useSSL=false";
 		con = (Connection) DriverManager.getConnection(url, "root", "");
 		System.out.println("Successfully connected to database!");
+		
 	}
 	
 	// Sends SQL query and returns output of query

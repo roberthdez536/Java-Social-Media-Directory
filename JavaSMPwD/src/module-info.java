@@ -8,5 +8,7 @@ module javaSMP {
 	requires java.sql;
 	requires mysql.connector.java;
 	
+	opens operations to javafx.base;
+	
 	opens application;
 }
