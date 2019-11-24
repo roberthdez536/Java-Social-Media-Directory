@@ -9,12 +9,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import operations.Add;
 import operations.Database;
+import operations.Manage;
 import operations.User;
 
 public class GUIController {
@@ -25,6 +26,7 @@ public class GUIController {
 	@FXML private TableColumn<User, String> colEmail;
 	private ObservableList<User> data;
 	
+	// javaFX reserved function that sets fields of TableView
 	@FXML
 	public void initialize() {
 		assert UsersTable != null : "fx:id=\"UsersTable\" was not "
@@ -39,6 +41,7 @@ public class GUIController {
 		
 	}
 	
+	// Grabs data from database table 'users' and displays each row on javaFX TableView
 	public void buildUsersTable() {
 		data = FXCollections.observableArrayList();
 		try{
@@ -59,11 +62,13 @@ public class GUIController {
 	    }
 	}
 	
+	// Function to refresh table when button is clicked
 	@FXML private Button refreshButton;
 	public void refreshTable(ActionEvent event) {
 		buildUsersTable();
 	}
 	
+	// Object declarations
 	@FXML private TextField addtf1;
 	@FXML private TextField addtf2;
 	@FXML private TextField addtf3;
@@ -73,10 +78,29 @@ public class GUIController {
 	@FXML private TextField edittf1;
 	@FXML private Button editsubmit;
 	
-	
-	public void addSubmit(ActionEvent event) throws SQLException, IOException {
-		Add.addUsertoTable(addtf1.getText(), addtf2.getText(), addtf3.getText());
+	// Add user function
+	public void addUser(ActionEvent event) throws SQLException, IOException {
+		Manage.addUsertoTable(addtf1.getText(), addtf2.getText(), addtf3.getText());
 	}
+	
+	// Remove user function
+	public void removeUser(ActionEvent event) throws SQLException {
+		Manage.removeUserFromTable(removetf1.getText());
+	}
+	
+	// Toggle label test
+	@FXML private Label testlabel;
+	@FXML private Button visibilitytestbutton;
+	public void toggleLabelTest(ActionEvent event) {
+		if(testlabel.isVisible() == true) {
+			testlabel.setVisible(false);
+		}
+		else {
+			testlabel.setVisible(true);
+		}
+	}
+	
+	// ChoiceBox toggles show fields test
 	
 	// Example button fx:id to set in Scene Builder
 	@FXML private Button myButton;

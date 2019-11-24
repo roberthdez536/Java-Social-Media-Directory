@@ -16,7 +16,6 @@ public class Database {
 		String url = "jdbc:mysql://localhost:3306/testlogin?useSSL=false";
 		con = (Connection) DriverManager.getConnection(url, "root", "");
 		System.out.println("Successfully connected to database!");
-		
 	}
 	
 	// Sends SQL query and returns output of query
@@ -24,6 +23,11 @@ public class Database {
 		Statement stmt = (Statement) con.createStatement();
 		ResultSet result = stmt.executeQuery(sql);
 		return result;
+	}
+	
+	public static void mysqlUpdate(String sql) throws SQLException {
+		Statement stmt = (Statement) con.createStatement();
+		stmt.executeUpdate(sql);
 	}
 	
 	// Reads output of mysqlQuery, entire records
