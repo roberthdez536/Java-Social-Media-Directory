@@ -19,7 +19,9 @@ public class GUIController {
 	@FXML private TableColumn<User, String> colUname;
 	@FXML private TableColumn<User, String> colPass;
 	@FXML private TableColumn<User, String> colEmail;
+	@FXML private Button refreshButton;
 	private ObservableList<User> data;
+	
 	
 	@FXML
 	public void initialize() {
@@ -53,6 +55,10 @@ public class GUIController {
 	          e.printStackTrace();
 	          System.out.println("Error on Building Data");            
 	    }
+	}
+	
+	public void refreshTable(ActionEvent event) {
+		buildUsersTable();
 	}
 	
 	// Example button fx:id to set in Scene Builder
