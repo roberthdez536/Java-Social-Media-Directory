@@ -18,19 +18,33 @@ public class Database {
 		System.out.println("Successfully connected to database!");
 	}
 	
-	// Sends SQL query and returns output of query
+	// Sends SQL query and returns output of query (only allows selecting of data)
 	public static ResultSet mysqlQuery(String sql) throws SQLException {
 		Statement stmt = (Statement) con.createStatement();
 		ResultSet result = stmt.executeQuery(sql);
 		return result;
 	}
 	
+	// This query actually lets you change values in the database tables
 	public static void mysqlUpdate(String sql) throws SQLException {
 		Statement stmt = (Statement) con.createStatement();
 		stmt.executeUpdate(sql);
 	}
 	
-	// Reads output of mysqlQuery, entire records
+	// Checks if id exhist
+	public static boolean checkIdExhist(String id) throws SQLException {
+		ResultSet rs = mysqlQuery("SELECT * FROM users WHERE id="+id);
+		int rowCount = 0;
+		while (rs.next()) {
+			rowCount++;
+		}
+		if(rowCount == 1) {
+			return true;
+		}
+		return false;
+	}
+	
+	// Reads output of mysqlQuery, entire records (used this for debug)
 	public static void readTable(ResultSet result) throws SQLException {
 		while(result.next()) {
 			for(int i=1;i<=4;i++) {
