@@ -6,7 +6,7 @@ if(isset($_POST['signup'])){
     if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password'])){
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     
     $sqlinsert = "INSERT INTO users (uname, pass, email) VALUES ('$username', '$password', '$email')";
     if(mysqli_query($link, $sqlinsert)){

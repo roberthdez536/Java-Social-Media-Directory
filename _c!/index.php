@@ -12,21 +12,25 @@ if(isset($_POST['login'])){
     $username = $_POST['uname'];
     $password = $_POST['pass'];
     
-    $query = "SELECT * FROM `users` WHERE uname='$username' AND pass='$password'";
+    $query = "SELECT * FROM `users` WHERE uname='$username'";
+    
     
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
     $count = mysqli_num_rows($result);
+    if($count > 1){
+        exit("CRITICAL ERROR! MULTIPLE USERS WITH SAME USERNAME ON SYSTEM! \n(This feature is still being implemented. Please make a new account to continue using this site)");
+    }
+    $row = mysqli_fetch_array($result);
+    $verify = $row['pass'];
     
-    if($count == 1){
+    if($username == $row['uname'] && password_verify($password, $row['pass'])){
         $_SESSION['user_name'] = $username;
         header('location: main/home.php');
-    }
-    else{
-        echo "ERROR! User does not exhist";
+    }else{
+        echo "ERROR! Some fields were entered wrong or user does not exhist";
     }
         
-    }
-    else{
+    }else{
         echo "ERROR! Some fields weren't entered";
     }
 }
