@@ -20,3 +20,5 @@ To run this application:
 4. After you created the table with its neccessary fields, head to your web browser (make sure xampp is still running with the mysql and apache servers). Next type in the URL "localhost/_c!" (_c! is the name of the website folder you downloaded from here). This should send you to the website with the login form. To test that the database is working correctly, signup a new user account then check in phpmyadmin that the new account is there. 
 
 5. Now that you know that the website and sql server are running, you should be able to run the java application without any errors. Just stay mindful of the java console for anything that might come up.
+
+!!!Keep in mind that the java gui relies on the apache and mysql servers to be running. This is due to the differences in encryption standards between java and php!!!
