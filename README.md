@@ -3,15 +3,12 @@ Directory using databases to store and log social media post, accounts, and othe
 
 This master branch is the code that we will submit as our project.
 Database wise, use xampp to host a mysql server locally on your computer
-
-!!!Use the contents of "_c!/_c!/" for the website!!!
-
 ******************************************************************************************************
 To run this application:
 
 1. Make sure you have xampp installed
 
-2. Navigate to your xampp installation directory and look for the folder "../htdocs", and place the "_c!" folder in there (MAKE SURE YOU PUT the "_c!" folder inside "_c!", github placed it there instead!)
+2. Navigate to your xampp installation directory and look for the folder "../htdocs", and place the entire "_c!" folder in there.
 
 3. Now run xampp, from xampp you need to start the "MySQL" and "Apache" modules. this will launch your local web server and mysql database. From here click "Admin" for MySQL. This should open a tab in your browser to phpmyadmin. We need to create the database that everything uses so on the left side of the screen create a database named "testlogin" (this is what I hardcoded in the javagui so if you want you can change them). Add a table to the database named "users". Create the four fields for the users table labled with these names and storage types:
 
