@@ -8,12 +8,20 @@ if(isset($_POST['signup'])){
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     
-    $sqlinsert = "INSERT INTO users (uname, pass, email) VALUES ('$username', '$password', '$email')";
+    $sqlcheck = "SELECT * FROM users WHERE uname='$username'";
+    $result = mysqli_query($link, $sqlcheck) or die(mysqli_error($link));
+    $count = mysqli_num_rows($result);
+    if($count >= 1){
+        exit("ERROR! Username already exhist!");
+    }
+    else{
+        $sqlinsert = "INSERT INTO users (uname, pass, email) VALUES ('$username', '$password', '$email')";
     if(mysqli_query($link, $sqlinsert)){
         header('location: ../main/home.php');
     }
     else{
         echo "ERROR: Unable to execute $sqlinsert. ".mysqli_error;
+    }
     }
         
 }
